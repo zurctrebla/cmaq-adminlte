@@ -100,9 +100,9 @@ class UserController extends Controller
             return redirect()->back();
         }
         // $data = $request->all();
-        $data = $request->only(['name', 'email', 'password']);
+        $data = $request->only(['name', 'email']);
 
-        if ($data['password'])
+        if ($request->password)
             $data['password'] = bcrypt($request->password);
 
         $user->update($data);
